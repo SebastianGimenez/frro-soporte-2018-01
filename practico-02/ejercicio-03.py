@@ -22,7 +22,7 @@ class Persona:
 		return True if (int(self.edad) >= 18) else False
 
 	def print_data(self):
-		cadena = " Nombre:{0}\n Edad:{1}\n Sexo:{2}\n Peso:{3}\n Altura:{4}\n Dni:{5}\n".format(self.nombre, self.edad, self.sexo, self.peso, self.altura, self.dni)
+		cadena = "\n Nombre:{0}\n Edad:{1}\n Sexo:{2}\n Peso:{3}\n Altura:{4}\n Dni:{5}\n".format(self.nombre, self.edad, self.sexo, self.peso, self.altura, self.dni)
 		print(cadena)
 
 	def generar_dni(self):
