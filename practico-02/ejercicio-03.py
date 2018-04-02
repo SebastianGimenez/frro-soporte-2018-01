@@ -1,17 +1,18 @@
 import random
 
 class Persona:
-	"""docstring for Persona"""
-
-	nombre 	= ""
-	edad 	= ""
-	sexo 	= "" # H => hombre, M => mujer
-	peso 	= ""
-	altura 	= ""
-	dni 	= ""
+	"""
+		Atributos de la clase Persona
+		* nombre;
+		* edad;
+		* sexo; # H => hombre, M => mujer
+		* peso;
+		* altura;
+		* dni;
+	"""
 	def __init__(self, datos):
 		self.nombre = datos["nombre"]
-		self.edad 	= datos["edad"]
+		self.edad 	= int(datos["edad"])
 		self.sexo 	= datos["sexo"]
 		self.peso 	= datos["peso"]
 		self.altura = datos["altura"]
@@ -35,7 +36,8 @@ class Persona:
 
 dicc = { "nombre":"", "edad":"", "sexo":"", "peso":"", "altura":"" }
 for key in dicc:
-	dicc[key] = input("Ingrese "+key+": ")
+	plus = " [M / F]" if (key=="sexo") else ""
+	dicc[key] = input("Ingrese "+key.replace("_", " ")+plus+": ")
 
 persona = Persona(dicc)
 persona.print_data()
