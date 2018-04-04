@@ -1,15 +1,6 @@
 import random
-
 class Persona:
-	"""
-		Atributos de la clase Persona
-		* nombre;
-		* edad;
-		* sexo; # H => hombre, M => mujer
-		* peso;
-		* altura;
-		* dni;
-	"""
+
 	def __init__(self, datos):
 		self.nombre = datos["nombre"]
 		self.edad 	= int(datos["edad"])
@@ -20,17 +11,14 @@ class Persona:
 
 
 	def es_mayor_edad(self):
-		return True if (int(self.edad) >= 18) else False
+		return (self.edad) >= 18
 
 	def print_data(self):
 		cadena = "\n Nombre:{0}\n Edad:{1}\n Sexo:{2}\n Peso:{3}\n Altura:{4}\n Dni:{5}\n".format(self.nombre, self.edad, self.sexo, self.peso, self.altura, self.dni)
 		print(cadena)
 
 	def generar_dni(self):
-		dni = ""
-		for x in range(1,9):
-			num = random.randint(0, 9)
-			dni = dni + str(num)
+		dni = random.randint(10000000, 99999999)
 		return dni
 
 

@@ -11,17 +11,14 @@ class Persona:
 		self.dni 	= self.generar_dni()
 
 	def es_mayor_edad(self):
-		return True if (int(self.edad) >= 18) else False
+		return (self.edad) >= 18
 
 	def print_data(self):
 		cadena = "\n Nombre:{0}\n Edad:{1}\n Sexo:{2}\n Peso:{3}\n Altura:{4}\n Dni:{5}\n".format(self.nombre, self.edad, self.sexo, self.peso, self.altura, self.dni)
 		print(cadena)
 
 	def generar_dni(self):
-		dni = ""
-		for x in range(1,9):
-			num = random.randint(0, 9)
-			dni = dni + str(num)
+		dni = random.randint(10000000, 99999999)
 		return dni
 
 
@@ -40,7 +37,7 @@ class Estudiante(Persona):
 		self.año_ingreso 	= int(datos["año_ingreso"])
 		self.cant_materia 	= int(datos["cant_materia"])
 		self.aprobadas 		= int(datos["aprobadas"])
-	
+
 	def avance(self):
 		return (self.aprobadas*100)/self.cant_materia
 
@@ -49,7 +46,7 @@ class Estudiante(Persona):
 			#datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 			año_actual = int(datetime.now().strftime('%Y'))
 			return self.edad - (año_actual - self.año_ingreso)
-		else: 
+		else:
 			return "Todavía no esta en la universidad, pues no es mayor de edad"
 
 
