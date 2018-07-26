@@ -1,9 +1,10 @@
 # Implementar los metodos de la capa de datos de socios.
-
+import sys
+sys.path += ['/home/favio/Github/soporte/']
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from ejercicio_01 import Base, Socio
+from practico_05.base import Base, Socio
 
 
 class DatosSocio(object):
@@ -119,7 +120,6 @@ def pruebas():
     pers.nombre = "Juan"
     pers.apellido = "Perez"
 
-    
     socio = datos.alta(pers)
     assert socio.id_socio > 0
 
