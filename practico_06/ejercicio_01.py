@@ -1,6 +1,5 @@
 import sys
-sys.path += ['/home/favio/Github/soporte/']
-# print(sys.path)
+sys.path += ['..']
 
 from practico_05.base import Socio
 from practico_05.ejercicio_02 import DatosSocio

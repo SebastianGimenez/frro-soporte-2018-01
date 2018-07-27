@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path += ['/home/favio/Github/soporte/']
+sys.path += ['..']
 
 from practico_05.base import Socio
 from practico_06.ejercicio_01 import NegocioSocio, LongitudInvalida

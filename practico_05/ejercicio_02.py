@@ -1,6 +1,6 @@
 # Implementar los metodos de la capa de datos de socios.
 import sys
-sys.path += ['/home/favio/Github/soporte/']
+sys.path += ['..']
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

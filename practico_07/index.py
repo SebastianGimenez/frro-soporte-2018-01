@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-sys.path += ['/home/favio/Github/soporte/']
+sys.path += ['..']
 from tkinter import *
 from tkinter import ttk, font, messagebox
 from practico_05.base import Socio
