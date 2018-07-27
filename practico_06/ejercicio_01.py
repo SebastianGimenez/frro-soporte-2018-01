@@ -72,17 +72,14 @@ class NegocioSocio(object):
         :type socio: Socio
         :rtype: bool
         """
-        val1=self.regla_1(socio)
-        val2=self.regla_2(socio)
-        val3=self.regla_3()
-        if (val1 & val2 & val3):
-            validacion=self.datos.alta(socio)
-            if (validacion==False):
-                return False
-            else:
-                return True
-        else:
+        self.regla_1(socio)
+        self.regla_2(socio)
+        self.regla_3()
+        validacion=self.datos.alta(socio)
+        if (validacion==False):
             return False
+        else:
+            return True
 
     def baja(self, id_socio):
         """
@@ -91,10 +88,9 @@ class NegocioSocio(object):
         :rtype: bool
         """
         try:
-            validacion=self.datos.baja(id_socio)
-            return validacion
+            return self.datos.baja(id_socio)
         except Exception as e:
-            return False
+            raise e
 
     def modificacion(self, socio):
         """
@@ -106,13 +102,14 @@ class NegocioSocio(object):
         :rtype: bool
         """
         try:
+            self.regla_2(socio)
             validacion=self.datos.modificacion(socio)
-            if (validacion==False):
-                return False
-            else:
+            if (validacion):
                 return True
+            else:
+                return False
         except Exception as e:
-            return False
+            raise e
 
     def regla_1(self, socio):
         """
@@ -121,12 +118,10 @@ class NegocioSocio(object):
         :raise: DniRepetido
         :return: bool
         """
-        socios=self.todos()
-        for i in socios:
-            if(i.dni==socio.dni):
-                return False
-            else:
-                return True
+        if(self.buscar_dni(socio.dni)):
+            raise DniRepetido("Ya existe un Socio con el mismo DNI.")
+        else:
+            return True
 
 
     def regla_2(self, socio):
@@ -139,8 +134,10 @@ class NegocioSocio(object):
         if (len(socio.nombre)>self.MIN_CARACTERES & len(socio.nombre)<self.MAX_CARACTERES):
             if (len(socio.apellido)>self.MIN_CARACTERES & len(socio.apellido)<self.MAX_CARACTERES):
                 return True
+            else:
+                raise LongitudInvalida('Longitud Invalida: campo "Apellido"')
         else:
-            return False
+            raise LongitudInvalida('Longitud Invalida: campo "Nombre"')
 
 
     def regla_3(self):
@@ -153,4 +150,4 @@ class NegocioSocio(object):
         if (len(socios)<self.MAX_SOCIOS):
             return True
         else:
-            return False
+            raise MaximoAlcanzado('Cantidad máxima de socios alcanzada.')
